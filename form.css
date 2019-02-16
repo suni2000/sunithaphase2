@@ -1,0 +1,82 @@
+/*this is for tab view*/
+#main{
+	background: grey;
+	text-align: center;
+}
+#main a{
+	text-decoration: none;
+}
+#main button{
+	background: #AD4FE3;
+	height: 5vh;
+	width: 4%;
+}
+header{
+	background: aqua;
+	height: 20%;
+	padding: 2%;
+	margin:2%;
+	border-radius: 5%;
+}
+.profile{
+	color:red;
+}
+#form{
+	background:#0E9470;
+	text-align: center; 
+
+}
+.main{
+	background:#7FE8CB;
+	display: flex;
+	padding: 3%;
+	margin: 2%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.sub{
+	background:#D5FEF3;
+	width:90%;
+	height: 50%;
+	margin: 1%;
+	padding: 3%;
+	box-shadow: 2px 2px 2px 2px;
+}
+.sub1{
+	background:#D5FEF3;
+	width: 40%;
+	padding: 3%;
+	margin: 2%;
+	box-shadow: 3px 3px 3px 3px;
+	border-radius: 10%;
+
+}
+input,select{
+	width: 90%;
+	margin: 1%
+
+}
+button{
+ width: 15%;
+ border-radius: 40%;
+ height: 30%
+ height:10vh;
+}
+.left{
+	background: #EA8C78;
+	width: 30%;
+	text-align: center;
+	height: 90%;
+	border-radius: 3%;
+	padding: 2%;
+	box-shadow: 3%;
+	display: wrap;
+}
+.right{
+	background: #E5CB5D;
+	width: 40%;
+	border-radius: 3%;
+	padding: 2%;
+	box-shadow: 3%;
+}

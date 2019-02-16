@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>::Resume building::</title>
+	<link rel="stylesheet" type="text/css" href="form.css">
+</head>
+<body id="form">
+     <div class="main">
+      <h1>Resume building</h1>
+     	<div class="sub">
+     		<h2>career objective</h2>
+     		<select name="career" id="career">
+     			<option>select your career objective </option>
+     			<option> i want to seek a position in reputed company to explore my skills</option>
+
+     		</select>
+     		
+     	</div>
+     	<div class="sub1">
+     		<h2>Personal details</h2>
+     		<input type="text" name="name" id="name" placeholder="enter your name here"><br>
+     		<input type="text" name="roll" id="roll" placeholder="enter your roll no here"><br>
+     		<input type="text" name="email" id="email" placeholder="enter your email here"><br>
+     		<input type="number" name="number" id="number" placeholder="enter your  phn number here"><br>
+     		<input type="text" name="place" id="place"  placeholder="enter your place here">
+
+     		
+     	</div>
+     	<div class="sub1">
+     		<h2>PG details</h2>
+     		<select name="pgdegree" id="pgdegree">
+     			<option>please select your degree</option>
+     			<option>m.com</option>
+     			<option>M.tech</option>
+     			<option>MBA</option>
+     			<option>MCA</option>
+     			<option>MD</option>
+     		</select><br>
+     		<input type="text" name="pginstitute" id="pgins" placeholder="enter your clg name"><br>
+     		<input type="text" name="percentage" id="pgper" placeholder="enter your percentage"><br>
+     		<input type="text" name="pgyop" id="pgyop" placeholder="enter your passed out year"><br>
+     	</div>
+     	<div class="sub1">
+     		<h2>UG details</h2>
+     		<select name="ugdegree" id="ugdegree">
+     			<option>please select your degree</option>
+     			<option>b.com</option>
+     			<option>b.tech</option>
+     			<option>LLB</option>
+     			<option>BSC</option>
+     			<option>MBBS</option>
+     		</select><br>
+     		<input type="text" name="uginstitute" id="ugins" placeholder="enter your institute name"><br>
+     		<input type="text" name="percentage" id="ugper" placeholder="enter your percentage"><br>
+     		<input type="text" name="ugyop" id="ugyop" placeholder="enter your passed out year"><br>
+     		
+     	</div>
+     	<div class="sub1">
+     	<h2>Intermediate details</h2>
+     		<select name="inter" id="inter">
+     			<option>please select your degree</option>
+     			<option>m.p.c</option>
+     			<option>bi.p.c</option>
+     			<option>diploma</option>
+     		</select><br>
+     		<input type="text" name="college" id="interins" placeholder="enter your clg name"><br>
+     		<input type="text" name="percentage" id="interper" placeholder="enter your percentage"><br>
+     		<input type="text" name="interyop" id="interyop" placeholder="enter your passed out year"><br>	
+     	</div>
+     	<div class="sub1">
+     		<h2>S.S.C details</h2>
+     		<select name="ssc" id="ssc">
+     			<option>please select your board</option>
+     			<option>state</option>
+     			<option>cbse</option>
+     			<option>icsc</option>
+     		</select><br>
+     		<input type="text" name="sscinstitute" id="sscins" placeholder="enter your school name"><br>
+     		<input type="text" name="sscper" id="sscper" placeholder="enter your percentage"><br>
+     		<input type="text" name="sscyop" id="sscyop" placeholder="enter your passed out year"><br>	
+     	</div>
+     </div>
+     <button id="button" name="button" onclick="submit()">submit</button>
+</body>
+</html>
+<script type="text/javascript">
+	function submit(){
+      var career=document.getElementById("career").value;
+      var name=document.getElementById("name").value;
+      var roll=document.getElementById("roll").value;
+      var email=document.getElementById("email").value;
+      var number=document.getElementById("number").value;
+      var place=document.getElementById("place").value;
+
+      var pgdegree=document.getElementById("pgdegree").value;
+      var pgins=document.getElementById("pgins").value;
+      var pgper=document.getElementById("pgper").value;
+      var pgyop=document.getElementById("pgyop").value;
+
+      var ugdegree=document.getElementById("ugdegree").value;
+      var ugins=document.getElementById("ugins").value;
+      var ugper=document.getElementById("ugper").value;
+      var ugyop=document.getElementById("ugyop").value;
+
+      var inter=document.getElementById("inter").value;
+      var interins=document.getElementById("interins").value;
+      var interper=document.getElementById("interper").value;
+      var interyop=document.getElementById("interyop").value;
+
+      var ssc=document.getElementById("ssc").value;
+      var sscins=document.getElementById("sscins").value;
+      var sscper=document.getElementById("sscper").value;
+      var sscyop=document.getElementById("sscyop").value;
+      
+      var indexedDB=window.indexedDB || window.mozIndexedDB || window.wwebkitIndexedDB || window.msIndedDB;
+      indexedDB ? console.log("success") : console.log("error")
+      var open;
+      var result;
+      var store;
+      var tx;
+       var request = indexedDB.open("database",1)
+       request.onupgradeneeded = function(e){
+        open = e.target.result;
+        store = open.createObjectStore("resumedata",{keyPath:"name"}) 
+         
+       }
+       request.onerror = function(e){
+        console.log("error"+e);
+
+       }
+       request.onsuccess = function(e)
+       {
+        open = e.target.result;
+        tx = open.transaction("resumedata","readwrite");
+        store = tx.objectStore("resumedata");
+        store.put({
+          car:career,
+          name:name,
+          rollno:roll,
+          mailid:email,
+          phno:number,
+          place:place,
+          education:[
+             {
+                degree:pgdegree,
+                inst:pgins,
+                per:pgper,
+                yop:pgyop
+             },
+             {
+                degree:ugdegree,
+                 inst:ugins,
+                per:ugper,
+                yop:ugyop
+             },
+             {
+                degree:interins,
+                inst:interins,
+                per:interper,
+                yop:interyop
+             },
+             {
+                degree:ssc,
+                inst:sscins,
+                per:sscper,
+                yop:sscyop
+              }
+
+
+          ]
+          });
+
+
+       }
+       window.open("index.html","_self");
+     }
+</script>
